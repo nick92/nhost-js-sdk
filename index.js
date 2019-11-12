@@ -163,13 +163,13 @@ export default class nhost {
     this.initSession(data);
   }
 
-  logout() {
+  async logout() {
     this.inMemory = {
       jwt_token: null,
       user_id: null,
       exp: null,
     };
-    this.storage.clear();
+    await this.storage.clear();
     this.stopRefetchTokenInterval();
 
     if (this.logged_in) {
